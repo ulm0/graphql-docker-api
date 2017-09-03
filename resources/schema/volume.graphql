@@ -1,0 +1,21 @@
+type VolumeList {
+    volumes: [Volume]
+    warnings: [String]
+}
+
+type Volume {
+    driver: String
+    driverOpts: StringAnyMap
+    labels: StringAnyMap
+    mountpoint: String
+    name: String
+    scope: String
+    status: StringAnyMap
+}
+
+input VolumeFilter {
+    dangling: [Boolean]
+    driver: [String]
+    label: [String]
+    name: [String]
+}

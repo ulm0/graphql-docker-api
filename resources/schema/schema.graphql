@@ -1,0 +1,34 @@
+schema {
+    query: Query
+}
+
+#Root Query
+type Query {
+    # System-wide information
+    system: System
+
+    # Return more details about the Swarm. Requires Docker API >= 1.24
+    swarm: Swarm
+
+    # List containers matching various filters
+    containers(
+    all: Boolean,
+    limit: Int,
+    size: Boolean,
+    filter: ContainerFilter): [Container]
+
+    # List images matching various filters
+    images(
+    all: Boolean,
+    digests: Boolean,
+    filter: ImageFilter): [Image]
+
+    # Search images on Docker Hub
+    searchImagesOnDockerHub(term: String!): [ImageSearchResult]
+
+    # List volumes matching various filters
+    volumes(filter: VolumeFilter): VolumeList
+
+    # List networks matching various filters
+    networks(filter: NetworkFilter): [Network]
+}

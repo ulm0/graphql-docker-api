@@ -1,0 +1,6 @@
+# Map<String,Object>
+scalar StringAnyMap
+# Set of Strings
+scalar StringSet
+# Date
+scalar Date
