@@ -6,7 +6,7 @@ stages:
   image: golang:1.8-alpine
   stage: test-build
   script:
-    - apk add --no-cache build-base git
+    - apk add --no-cache build-base git bash
     - go get -d gitlab.com/klud/graphql-docker-api/cmd/gql-dkr
     - cd go/src/gitlab.com/klud/graphql-docker-api/cmd/gql-dkr
     - go get ./
