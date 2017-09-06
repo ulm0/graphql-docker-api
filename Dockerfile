@@ -13,11 +13,25 @@ RUN go get ./ && \
     upx -t gql-dkr
 
 FROM scratch
-LABEL maintainer "Pierre Ugaz <pierre.ugaz@ruway.me>"
+# Build-time metadata as defined at http://label-schema.org
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
+LABEL maintainer="Pierre Ugaz <pierre.ugaz@ruway.me>" \
+    org.label-schema.build-date=$BUILD_DATE \
+    org.label-schema.description="A GraphQL Server for the Docker API, written in Go" \
+    org.label-schema.name="GraphQL Docker API" \
+    org.label-schema.schema-version="1.0" \
+    org.label-schema.vcs-ref=$VCS_REF \
+    org.label-schema.vcs-url="https://gitlab.com/klud/graphql-docker-api" \
+    org.label-schema.vendor="Pierre Ugaz" \
+    org.label-schema.version=$VERSION
+
 ENV API_ENDPOINT="" \
     DOCKER_CERT_PATH="" \
     DOCKER_HOST="" \
     GQL_PORT=""
+
 COPY --from=build-env /go/src/gitlab.com/klud/graphql-docker-api/cmd/gql-dkr/gql-dkr .
 EXPOSE 8080
 CMD ["/gql-dkr"]
