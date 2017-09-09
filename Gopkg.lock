@@ -38,12 +38,6 @@
   version = "v0.3.1"
 
 [[projects]]
-  name = "github.com/fatih/color"
-  packages = ["."]
-  revision = "570b54cabe6b8eb0bc2dfce68d964677d63b5260"
-  version = "v1.5.0"
-
-[[projects]]
   name = "github.com/gorilla/handlers"
   packages = ["."]
   revision = "a4043c62cc2329bacda331d33fc908ab11ef0ec3"
@@ -56,22 +50,10 @@
   version = "v0.7.2"
 
 [[projects]]
-  name = "github.com/graphql-go/handler"
+  name = "github.com/mastertinner/handler"
   packages = ["."]
   revision = "07e3dd439c1f4ec14e685af7c48e8863bcc42c9d"
   version = "v0.1.0"
-
-[[projects]]
-  name = "github.com/mattn/go-colorable"
-  packages = ["."]
-  revision = "167de6bfdfba052fa6b2d3664c8f5272e23c9072"
-  version = "v0.0.9"
-
-[[projects]]
-  name = "github.com/mattn/go-isatty"
-  packages = ["."]
-  revision = "fc9e8d8ef48496124e79ae0df75490096eccf6fe"
-  version = "v0.0.2"
 
 [[projects]]
   name = "github.com/opencontainers/runc"
@@ -84,6 +66,12 @@
   packages = ["."]
   revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
   version = "v0.8.0"
+
+[[projects]]
+  name = "gitlab.com/klud/graphql-docker-api"
+  packages = ["schema"]
+  revision = "12f9388c6e9dc194b1df5973d3df98cdd49cc856"
+  version = "v0.0.1"
 
 [[projects]]
   branch = "master"
@@ -106,6 +94,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "fdc867a8a82bf44f4c2d5aeeb14ec67db42f0385d6e5749ec50bc122433d27e8"
+  inputs-digest = "46fcafc07e74756a29bfa0894858320b435f7ae9d3ac6a36afa5f42c2b41fc91"
   solver-name = "gps-cdcl"
   solver-version = 1

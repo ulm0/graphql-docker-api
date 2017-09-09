@@ -1,8 +1,4 @@
-# GraphQL Docker API
-
-[![pipeline status](https://gitlab.com/klud/graphql-docker-api/badges/master/pipeline.svg)](https://gitlab.com/klud/graphql-docker-api/commits/master) [![coverage report](https://gitlab.com/klud/graphql-docker-api/badges/master/coverage.svg)](https://gitlab.com/klud/graphql-docker-api/commits/master) [![Go Report Card](https://goreportcard.com/badge/gitlab.com/klud/graphql-docker-api)](https://goreportcard.com/report/gitlab.com/klud/graphql-docker-api) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
-
-[![](https://images.microbadger.com/badges/image/klud/docker-gql.svg)](https://microbadger.com/images/klud/docker-gql "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/klud/docker-gql.svg)](https://microbadger.com/images/klud/docker-gql "Get your own version badge on microbadger.com") [![Docker Pulls](https://img.shields.io/docker/pulls/klud/docker-gql.svg)](https://hub.docker.com/r/klud/docker-gql/) [![Docker Pulls](https://img.shields.io/docker/stars/klud/docker-gql.svg)](https://hub.docker.com/r/klud/docker-gql/) 
+# GraphQL Docker API [![pipeline status](https://gitlab.com/klud/graphql-docker-api/badges/master/pipeline.svg)](https://gitlab.com/klud/graphql-docker-api/commits/master) [![](https://images.microbadger.com/badges/version/klud/docker-gql.svg)](https://microbadger.com/images/klud/docker-gql "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/klud/docker-gql.svg)](https://microbadger.com/images/klud/docker-gql "Get your own image badge on microbadger.com") [![Go Report Card](https://goreportcard.com/badge/gitlab.com/klud/graphql-docker-api)](https://goreportcard.com/report/gitlab.com/klud/graphql-docker-api) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
 
 <p align="center"> <img src="resources/docker-go-graphql.png" alt="Logo" width="400"></p>
 
@@ -21,10 +17,10 @@
 
 * Get the package: `go get -d gitlab.com/klud/graphql-docker-api/cmd/gql-dkr`
 * Dependencies
-  * **Not using [`dep`](README.md#open-source-libraries-and-tools).** Go to the project folder with `cd $GOPATH/src/gitlab.com/klud/graphql-docker-api/cmd/gql-dkr` and `go get ./`, this will download the depedencies needed, once that's done build the package with `go build`.
+  * **Not using [`dep`](README.md#open-source-libraries-and-tools).** Go to the project folder with `cd $GOPATH/src/gitlab.com/klud/graphql-docker-api/cmd/gql-dkr` and `go get -d ./`, this will download the depedencies needed, once that's done build the package with `go build`.
   * **Using [`dep`](README.md#open-source-libraries-and-tools).** Go to the project folder with `cd $GOPATH/src/gitlab.com/klud/graphql-docker-api`, and run `dep install`, now get to `$GOPATH/src/gitlab.com/klud/graphql-docker-api/cmd/gql-dkr` and build the package with `go build`.
 
-**That's pretty much it. Congrats now You have GraphQL Docker API on your system.**
+**That's pretty much it. Congrats You have GraphQL Docker API on your system now.**
 
 ### Docker image
 
@@ -72,11 +68,13 @@ klud/docker-gql
 * `DOCKER_CERT_PATH`: When using safe connection to Docker Remote API.
 * `DOCKER_HOST`: Host the API will retrieve information from (default: `"/var/run/docker.sock"`).
 * `GQL_PORT`: Port the API will listen on (default: `":8080"`).
+* `GRAPHIQL`: UI to execute queries in the browser. It's enabled by default, `GRAPHIQL=0` disables it.
 
 ### Notes
 
 * If using a Docker Remote API, this must be specified with the either HTTP or HTTPS protocols (e.g,: `DOCKER_HOST="http://<host>:<port>"`).
 * When using HTTPS, the TLS certs must be placed in `/etc/docker` or the `/path/to/folder/containing/the/docker/certs` must be mounted under `/etc/docker` inside the running container, and must follow the semantics behind the [DOCKER_CERT_PATH](https://docs.docker.com/engine/security/https/#create-a-ca-server-and-client-keys-with-openssl) env var.
+* `GRAPHIQL` can be reached at the `API_ENDPOINT`; disabling is advised when using in production.
 
 ## TODO
 

@@ -6,7 +6,13 @@ RUN apk add --no-cache git build-base && \
     apk add --no-cache upx
 ADD . /go/src/gitlab.com/klud/graphql-docker-api/
 WORKDIR /go/src/gitlab.com/klud/graphql-docker-api/cmd/gql-dkr
-RUN go get ./ && \
+RUN go get -d ./ && \
+#   Tweaking binary build process, until github.com/mastertinner/handler changes are merged
+    cd /go/src/github.com/mastertinner && \
+    rm -rf handler && \
+    git clone -b feature/graphiql https://github.com/mastertinner/handler.git && \
+    cd - && \
+#   Tweaking binary build process, until github.com/mastertinner/handler changes are merged
     CGO_ENABLED=0 GOOS=linux go build -a -ldflags="-s -w" -installsuffix cgo && \
 #   upx --best -qq gql-dkr && \
     upx --ultra-brute -qq gql-dkr && \
@@ -26,12 +32,11 @@ LABEL maintainer="Pierre Ugaz <pierre.ugaz@ruway.me>" \
     org.label-schema.vcs-url="https://gitlab.com/klud/graphql-docker-api" \
     org.label-schema.vendor="Pierre Ugaz" \
     org.label-schema.version=$VERSION
-
 ENV API_ENDPOINT="" \
     DOCKER_CERT_PATH="" \
     DOCKER_HOST="" \
-    GQL_PORT=""
-
+    GQL_PORT="" \
+    GRAPHIQL=""
 COPY --from=build-env /go/src/gitlab.com/klud/graphql-docker-api/cmd/gql-dkr/gql-dkr .
 EXPOSE 8080
 CMD ["/gql-dkr"]

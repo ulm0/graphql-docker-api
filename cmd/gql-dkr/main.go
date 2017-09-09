@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/fatih/color"
 	"github.com/gorilla/handlers"
 	"github.com/mastertinner/handler"
 	"gitlab.com/klud/graphql-docker-api/schema"
@@ -39,19 +38,19 @@ func enableUI() bool {
 }
 
 func main() {
+	var uiStatus string
+	ui := enableUI()
 	h := handler.New(&handler.Config{
 		Schema:   &schema.Schema,
 		Pretty:   true,
-		GraphiQL: enableUI(),
+		GraphiQL: ui,
 	})
-	cyanBold := color.New(color.FgCyan, color.Bold)
-	if enableUI() {
-		cyanBold.Printf("GraphiQL is enabled by default.\nSet GRAPHIQL=0 in order to disable, this is recommended when using in production.\n")
-	} else {
-		cyanBold.Println("GraphiQL has been disabled.")
-	}
-	bold := color.New(color.FgYellow, color.Bold)
-	bold.Printf("Endpoint: %v | Serving on %v\n", apiEndpoint(), getPort())
 	http.Handle(apiEndpoint(), h)
+	if ui {
+		uiStatus = "enabled"
+	} else {
+		uiStatus = "disabled"
+	}
+	log.Printf("Endpoint: %v | GraphiQL: %v | Serving on %v\n", apiEndpoint(), uiStatus, getPort())
 	log.Fatalln(http.ListenAndServe(getPort(), handlers.LoggingHandler(os.Stdout, http.DefaultServeMux)))
 }
