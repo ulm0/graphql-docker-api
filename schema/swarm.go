@@ -9,13 +9,16 @@ var (
 		Name: "CaConfig",
 		Fields: graphql.Fields{
 			"externalCas": &graphql.Field{
-				Type: externalCa,
-				// This must return a externalCa slice
-				// Resolver
+				Type: graphql.NewList(externalCa),
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec.CAConfig.ExternalCAs, nil
+				},
 			},
 			"nodeCertExpiry": &graphql.Field{
-				Type: graphql.Float,
-				// Resolver
+				Type: graphql.Int,
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return int32(swInfo.Cluster.Spec.CAConfig.NodeCertExpiry), nil
+				},
 			},
 		},
 	})
@@ -23,8 +26,10 @@ var (
 		Name: "DispatcherConfig",
 		Fields: graphql.Fields{
 			"heartbeatPeriod": &graphql.Field{
-				Type: graphql.Float,
-				// Resolver
+				Type: graphql.Int,
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return int32(swInfo.Cluster.Spec.Dispatcher.HeartbeatPeriod), nil
+				},
 			},
 		},
 	})
@@ -33,12 +38,15 @@ var (
 		Fields: graphql.Fields{
 			"name": &graphql.Field{
 				Type: graphql.String,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec.TaskDefaults.LogDriver.Name, nil
+				},
 			},
-			"options": &graphql.Field{
-				Type: stringAnyMap,
-				// Resolver
-			},
+			// TBI
+			// "options": &graphql.Field{
+			// 	Type: stringAnyMap,
+			// 	// Resolver
+			// },
 		},
 	})
 	encryptionConfig = graphql.NewObject(graphql.ObjectConfig{
@@ -46,7 +54,9 @@ var (
 		Fields: graphql.Fields{
 			"autoLockManagers": &graphql.Field{
 				Type: graphql.Boolean,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec.EncryptionConfig.AutoLockManagers, nil
+				},
 			},
 		},
 	})
@@ -84,17 +94,37 @@ var (
 	externalCa = graphql.NewObject(graphql.ObjectConfig{
 		Name: "ExternalCa",
 		Fields: graphql.Fields{
-			"options": &graphql.Field{
-				Type: stringAnyMap,
-				// Resolver
+			"caCert": &graphql.Field{
+				Type: graphql.String,
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					for _, exCa := range swInfo.Cluster.Spec.CAConfig.ExternalCAs {
+						return exCa.CACert, nil
+					}
+					return nil, nil
+				},
 			},
+			// TBI
+			// "options": &graphql.Field{
+			// 	Type: stringAnyMap,
+			// 	// Resolver
+			// },
 			"protocols": &graphql.Field{
 				Type: graphql.String,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					for _, exCa := range swInfo.Cluster.Spec.CAConfig.ExternalCAs {
+						return exCa.Protocol, nil
+					}
+					return nil, nil
+				},
 			},
 			"url": &graphql.Field{
 				Type: graphql.String,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					for _, exCa := range swInfo.Cluster.Spec.CAConfig.ExternalCAs {
+						return exCa.URL, nil
+					}
+					return nil, nil
+				},
 			},
 		},
 	})
@@ -277,7 +307,9 @@ var (
 		Fields: graphql.Fields{
 			"taskHistoryRetentionLimit": &graphql.Field{
 				Type: graphql.Int,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return int32(*swInfo.Cluster.Spec.Orchestration.TaskHistoryRetentionLimit), nil
+				},
 			},
 		},
 	})
@@ -299,40 +331,59 @@ var (
 		Fields: graphql.Fields{
 			"electionTick": &graphql.Field{
 				Type: graphql.Int,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return int32(swInfo.Cluster.Spec.Raft.ElectionTick), nil
+				},
 			},
 			"heartbeatTick": &graphql.Field{
 				Type: graphql.Int,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return int32(swInfo.Cluster.Spec.Raft.HeartbeatTick), nil
+				},
 			},
 			"keepOldSnapshots": &graphql.Field{
 				Type: graphql.Int,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return int32(*swInfo.Cluster.Spec.Raft.KeepOldSnapshots), nil
+				},
 			},
 			"logEntriesForSlowFollowers": &graphql.Field{
 				Type: graphql.Int,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return int32(swInfo.Cluster.Spec.Raft.LogEntriesForSlowFollowers), nil
+				},
 			},
 			"snapshotInterval": &graphql.Field{
 				Type: graphql.Int,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return int32(swInfo.Cluster.Spec.Raft.SnapshotInterval), nil
+				},
 			},
 		},
 	})
-	// TBI
-	// remoteManager = graphql.NewObject(graphql.ObjectConfig{
-	// 	Name: "RemoteManager",
-	// 	Fields: graphql.Fields{
-	// 		"addr": &graphql.Field{
-	// 			Type: graphql.String,
-	// 			// Resolver
-	// 		},
-	// 		"nodeId": &graphql.Field{
-	// 			Type: graphql.String,
-	// 			// Resolver
-	// 		},
-	// 	},
-	// })
+	remoteManager = graphql.NewObject(graphql.ObjectConfig{
+		Name: "RemoteManager",
+		Fields: graphql.Fields{
+			"addr": &graphql.Field{
+				Type: graphql.String,
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					for _, peer := range swInfo.RemoteManagers {
+						return peer.Addr, nil
+					}
+					return nil, nil
+				},
+			},
+			"nodeId": &graphql.Field{
+				Type: graphql.String,
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					for _, peer := range swInfo.RemoteManagers {
+						return peer.NodeID, nil
+					}
+					return nil, nil
+				},
+			},
+		},
+	})
 	resources = graphql.NewObject(graphql.ObjectConfig{
 		Name: "Resources",
 		Fields: graphql.Fields{
@@ -402,11 +453,12 @@ var (
 					return swInfo.Cluster.RootRotationInProgress, nil
 				},
 			},
-			// TBI
-			// "swarmSpec": &graphql.Field{
-			// 	Type: swarmSpec,
-			// 	// Resolver
-			// },
+			"swarmSpec": &graphql.Field{
+				Type: swarmSpec,
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec, nil
+				},
+			},
 			"tlsInfo": &graphql.Field{
 				Type: tlsInfo,
 				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
@@ -427,7 +479,6 @@ var (
 			},
 		},
 	})
-
 	swarmInfo = graphql.NewObject(graphql.ObjectConfig{
 		Name: "SwarmInfo",
 		Fields: graphql.Fields{
@@ -479,13 +530,12 @@ var (
 					return swInfo.Nodes, nil
 				},
 			},
-			// TBI
-			// "remoteManagers": &graphql.Field{
-			// 	Type: graphql.NewList(remoteManager),
-			// 	Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-			// 		return swInfo.RemoteManagers, nil
-			// 	},
-			// },
+			"remoteManagers": &graphql.Field{
+				Type: graphql.NewList(remoteManager),
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.RemoteManagers, nil
+				},
+			},
 		},
 	})
 	swarmNode = graphql.NewObject(graphql.ObjectConfig{
@@ -534,35 +584,50 @@ var (
 		Fields: graphql.Fields{
 			"caConfig": &graphql.Field{
 				Type: caConfig,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec.CAConfig, nil
+				},
 			},
 			"dispatcher": &graphql.Field{
 				Type: dispatcherConfig,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec.Dispatcher, nil
+				},
 			},
 			"encryptionConfig": &graphql.Field{
 				Type: encryptionConfig,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec.EncryptionConfig, nil
+				},
 			},
-			"labels": &graphql.Field{
-				Type: stringAnyMap,
-				// Resolver
-			},
+			// TBI
+			// "labels": &graphql.Field{
+			// 	Type: stringAnyMap,
+			// 	// Resolver
+			// },
 			"name": &graphql.Field{
-				Type: graphql.DateTime,
-				// Resolver
+				Type: graphql.String,
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec.Annotations.Name, nil
+				},
 			},
 			"orchestration": &graphql.Field{
 				Type: orchestrationConfig,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec.Orchestration, nil
+				},
 			},
 			"raft": &graphql.Field{
 				Type: raftconfig,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec.Raft, nil
+				},
 			},
 			"taskDefaults": &graphql.Field{
 				Type: taskDefaults,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec.TaskDefaults, nil
+				},
 			},
 		},
 	})
@@ -582,7 +647,9 @@ var (
 		Fields: graphql.Fields{
 			"logDriver": &graphql.Field{
 				Type: driver,
-				// Resolver
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					return swInfo.Cluster.Spec.TaskDefaults.LogDriver, nil
+				},
 			},
 		},
 	})

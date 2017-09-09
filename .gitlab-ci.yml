@@ -18,7 +18,7 @@ stages:
   artifacts:
     name: "$CI_JOB_NAME"
     paths:
-      - /go/src/gitlab.com/klud/graphql-docker-api/cmd/gql-dkr
+      - go/src/gitlab.com/klud/graphql-docker-api/cmd/gql-dkr/gql-dkr
     expire_in: 1 week
 
 .images: &images

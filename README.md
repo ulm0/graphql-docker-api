@@ -1,4 +1,6 @@
-# GraphQL Docker API [![pipeline status](https://gitlab.com/klud/graphql-docker-api/badges/master/pipeline.svg)](https://gitlab.com/klud/graphql-docker-api/commits/master) [![](https://images.microbadger.com/badges/version/klud/docker-gql.svg)](https://microbadger.com/images/klud/docker-gql "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/klud/docker-gql.svg)](https://microbadger.com/images/klud/docker-gql "Get your own image badge on microbadger.com") [![Go Report Card](https://goreportcard.com/badge/gitlab.com/klud/graphql-docker-api)](https://goreportcard.com/report/gitlab.com/klud/graphql-docker-api) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
+# GraphQL Docker API
+
+[![pipeline status](https://gitlab.com/klud/graphql-docker-api/badges/master/pipeline.svg)](https://gitlab.com/klud/graphql-docker-api/commits/master) [![](https://images.microbadger.com/badges/version/klud/docker-gql.svg)](https://microbadger.com/images/klud/docker-gql "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/klud/docker-gql.svg)](https://microbadger.com/images/klud/docker-gql "Get your own image badge on microbadger.com") [![Go Report Card](https://goreportcard.com/badge/gitlab.com/klud/graphql-docker-api)](https://goreportcard.com/report/gitlab.com/klud/graphql-docker-api) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
 
 <p align="center"> <img src="resources/docker-go-graphql.png" alt="Logo" width="400"></p>
 
@@ -108,6 +110,8 @@ klud/docker-gql
 * [GraphQL](http://graphql.org)
 * [Golang](https://golang.org/)
 * [Go GraphQL](https://github.com/graphql-go/graphql)
+* [Go GraphQL handler](https://github.com/graphql-go/handler)
+* [Gorilla handlers](https://github.com/gorilla/handlers)
 
 ---
 > Inspired by [rm3l/docker-api-graphql](https://github.com/rm3l/docker-api-graphql)

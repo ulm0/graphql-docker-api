@@ -12,7 +12,8 @@ type SwarmSpec {
     caConfig: CaConfig
     dispatcher: DispatcherConfig
     encryptionConfig: EncryptionConfig
-    labels: StringAnyMap
+    # TBI
+    # labels: StringAnyMap
     name: String
     orchestration: OrchestrationConfig
     raft: RaftConfig
@@ -41,7 +42,8 @@ type CaConfig {
 }
 
 type ExternalCa {
-    options: StringAnyMap
+    caCert: string
+    # options: StringAnyMap
     protocol: String
     url: String
 }
@@ -56,7 +58,8 @@ type TaskDefaults {
 
 type Driver {
     name: String
-    options: StringAnyMap
+    # TBI
+    # options: StringAnyMap
 }
 
 type JoinTokens {
