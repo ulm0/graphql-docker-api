@@ -5,18 +5,12 @@ RUN apk add --no-cache git build-base && \
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     apk add --no-cache upx
 ADD . /go/src/gitlab.com/klud/graphql-docker-api/
-WORKDIR /go/src/gitlab.com/klud/graphql-docker-api/cmd/gql-dkr
+WORKDIR /go/src/gitlab.com/klud/graphql-docker-api/cmd/gdapi
 RUN go get -d ./ && \
-#   Tweaking binary build process, until github.com/mastertinner/handler changes are merged
-    cd /go/src/github.com/mastertinner && \
-    rm -rf handler && \
-    git clone -b feature/graphiql https://github.com/mastertinner/handler.git && \
-    cd - && \
-#   Tweaking binary build process, until github.com/mastertinner/handler changes are merged
     CGO_ENABLED=0 GOOS=linux go build -a -ldflags="-s -w" -installsuffix cgo && \
-#   upx --best -qq gql-dkr && \
-    upx --ultra-brute -qq gql-dkr && \
-    upx -t gql-dkr
+#   upx --best -qq gdapi && \
+    upx --ultra-brute -qq gdapi && \
+    upx -t gdapi
 
 FROM scratch
 # Build-time metadata as defined at http://label-schema.org
@@ -37,6 +31,6 @@ ENV API_ENDPOINT="" \
     DOCKER_HOST="" \
     GQL_PORT="" \
     GRAPHIQL=""
-COPY --from=build-env /go/src/gitlab.com/klud/graphql-docker-api/cmd/gql-dkr/gql-dkr .
+COPY --from=build-env /go/src/gitlab.com/klud/graphql-docker-api/cmd/gdapi/gdapi .
 EXPOSE 8080
-CMD ["/gql-dkr"]
+CMD ["/gdapi"]

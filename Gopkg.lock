@@ -8,12 +8,6 @@
   version = "v0.4.5"
 
 [[projects]]
-  name = "github.com/Sirupsen/logrus"
-  packages = ["."]
-  revision = "f006c2ac4710855cf0f916dd6b77acf6b048dc6e"
-  version = "v1.0.3"
-
-[[projects]]
   name = "github.com/docker/distribution"
   packages = ["digest","reference"]
   revision = "48294d928ced5dd9b378f7fd7c6f5da3ff3f2c89"
@@ -28,14 +22,14 @@
 [[projects]]
   name = "github.com/docker/go-connections"
   packages = ["nat","sockets","tlsconfig"]
-  revision = "990a1a1a70b0da4c4cb70e117971a4f0babfbf1a"
-  version = "v0.2.1"
+  revision = "3ede32e2033de7505e6500d6c868c2b9ed9f169d"
+  version = "v0.3.0"
 
 [[projects]]
   name = "github.com/docker/go-units"
   packages = ["."]
-  revision = "f2d77a61e3c169b43402a0a1e84f06daf29b8190"
-  version = "v0.3.1"
+  revision = "0dadbb0345b35ec7ef35e228dabb8de89a65bf52"
+  version = "v0.3.2"
 
 [[projects]]
   name = "github.com/gorilla/handlers"
@@ -44,40 +38,22 @@
   version = "v1.2.1"
 
 [[projects]]
-  name = "github.com/graphql-go/graphql"
-  packages = [".","gqlerrors","language/ast","language/kinds","language/lexer","language/location","language/parser","language/printer","language/source","language/typeInfo","language/visitor"]
-  revision = "105a6c24e6fdaf4008e56d947115a1a13dc46430"
-  version = "v0.7.2"
+  branch = "master"
+  name = "github.com/neelance/graphql-go"
+  packages = [".","errors","internal/common","internal/exec","internal/exec/packer","internal/exec/resolvable","internal/exec/selected","internal/query","internal/schema","internal/validation","introspection","log","relay","trace"]
+  revision = "10eb949b8f4439212ef19d5d924c47c10c110cc7"
 
 [[projects]]
-  name = "github.com/mastertinner/handler"
-  packages = ["."]
-  revision = "07e3dd439c1f4ec14e685af7c48e8863bcc42c9d"
-  version = "v0.1.0"
-
-[[projects]]
-  name = "github.com/opencontainers/runc"
-  packages = ["libcontainer/user"]
-  revision = "baf6536d6259209c3edfa2b22237af82942d3dfa"
-  version = "v0.1.1"
+  name = "github.com/opentracing/opentracing-go"
+  packages = [".","ext","log"]
+  revision = "1949ddbfd147afd4d964a9f00b24eb291e0e7c38"
+  version = "v1.0.2"
 
 [[projects]]
   name = "github.com/pkg/errors"
   packages = ["."]
   revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
   version = "v0.8.0"
-
-[[projects]]
-  name = "gitlab.com/klud/graphql-docker-api"
-  packages = ["schema"]
-  revision = "12f9388c6e9dc194b1df5973d3df98cdd49cc856"
-  version = "v0.0.1"
-
-[[projects]]
-  branch = "master"
-  name = "golang.org/x/crypto"
-  packages = ["ssh/terminal"]
-  revision = "81e90905daefcd6fd217b62423c0908922eadb30"
 
 [[projects]]
   branch = "master"
@@ -88,12 +64,12 @@
 [[projects]]
   branch = "master"
   name = "golang.org/x/sys"
-  packages = ["unix","windows"]
-  revision = "ab9e364efd8b52800ff7ee48a9ffba4e0ed78dfb"
+  packages = ["windows"]
+  revision = "a5054c7c1385fd50d9394475365355a87a7873ec"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "46fcafc07e74756a29bfa0894858320b435f7ae9d3ac6a36afa5f42c2b41fc91"
+  inputs-digest = "2b8efd3738f19b342db0fa6228187c4b0eb6cf867fd8f76700f2db6d5f7c83be"
   solver-name = "gps-cdcl"
   solver-version = 1
