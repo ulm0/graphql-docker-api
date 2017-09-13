@@ -1,7 +1,3 @@
-# Note!!!
-
-Since this project is in very early stage and due to [graphql-go/graphql](https://github.com/graphql-go/graphql)'s **overwhelming verbosity** the project is migrating to [neelance/graphql-go](https://github.com/neelance/graphql-go), which is more idiomatic and easy to use. ***This branch is gonna be used for such purposes.***
-
 # GraphQL Docker API
 
 [![pipeline status](https://gitlab.com/klud/graphql-docker-api/badges/migrate-lib/pipeline.svg)](https://gitlab.com/klud/graphql-docker-api/commits/migrate-lib) [![Go Report Card](https://goreportcard.com/badge/gitlab.com/klud/graphql-docker-api)](https://goreportcard.com/report/gitlab.com/klud/graphql-docker-api) [![](https://images.microbadger.com/badges/version/klud/docker-gql:0.1.0-rc.svg)](https://microbadger.com/images/klud/docker-gql:0.1.0-rc "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/klud/docker-gql:0.1.0-rc.svg)](https://microbadger.com/images/klud/docker-gql:0.1.0-rc "Get your own image badge on microbadger.com") [![Docker Pulls](https://img.shields.io/docker/pulls/klud/docker-gql.svg)](https://hub.docker.com/r/klud/docker-gql/) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
