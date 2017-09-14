@@ -26,9 +26,13 @@
   version = "1.13.1"
 
 [[constraint]]
-  name = "github.com/graphql-go/graphql"
-  version = "0.7.2"
+  name = "github.com/gorilla/handlers"
+  version = "1.2.1"
 
 [[constraint]]
-  name = "github.com/graphql-go/handler"
-  version = "0.1.0"
+  branch = "master"
+  name = "github.com/neelance/graphql-go"
+
+[[constraint]]
+  branch = "master"
+  name = "golang.org/x/net"

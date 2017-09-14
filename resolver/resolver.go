@@ -11,12 +11,16 @@ var (
 )
 
 type (
-	Resolver       struct{}
+	Resolver struct{}
+
 	systemResolver struct {
 		system client.Client
 	}
 	systemVersionResolver struct {
 		version types.Version
+	}
+	systemInfoResolver struct {
+		info types.Info
 	}
 )
 
@@ -28,4 +32,9 @@ func (r *Resolver) System() *systemResolver {
 func (r *systemResolver) Version() *systemVersionResolver {
 	v, _ := r.system.ServerVersion(ctx)
 	return &systemVersionResolver{version: v}
+}
+
+func (r *systemResolver) Info() *systemInfoResolver {
+	i, _ := r.system.Info(ctx)
+	return &systemInfoResolver{info: i}
 }

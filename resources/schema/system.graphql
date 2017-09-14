@@ -57,13 +57,13 @@ type SystemInfo {
     indexServerAddress: String
     initBinary: String
     ipv4Forwarding: Boolean
-    isolation: ContainerIsolation
+    # isolation: ContainerIsolation
     kernelMemory: Boolean
     kernelVersion: String
     labels: [String]
     liveRestoreEnabled: Boolean
     loggingDriver: String
-    memTotal: Int #This was a Long, but the struct uses an Int64
+    memTotal: Int
     memoryLimit: Boolean
     nCpu: Int
     nEventsListener: Int
@@ -74,12 +74,12 @@ type SystemInfo {
     oomKillDisable: Boolean
     operatingSystem: String
     osType: String
-    plugins: Plugins
-    registryConfig: RegistryConfig
+    # plugins: Plugins
+    # registryConfig: RegistryConfig
     securityOptions: [String]
     serverVersion: String
     swapLimit: Boolean
-    swarm: SwarmInfo
+    # swarm: SwarmInfo
     systemTime: String
 }
 

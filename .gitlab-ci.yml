@@ -5,6 +5,8 @@ stages:
 .test-build: &test-build
   image: golang:1.8-alpine
   stage: test-build
+  except:
+    - tags
   script:
     - apk add --no-cache build-base git bash
     - mkdir -p /go/src/gitlab.com/klud/graphql-docker-api/

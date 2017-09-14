@@ -59,17 +59,17 @@
   branch = "master"
   name = "golang.org/x/net"
   packages = ["context","context/ctxhttp","proxy"]
-  revision = "66aacef3dd8a676686c7ae3716979581e8b03c47"
+  revision = "b129b8e0fbeb39c8358e51a07ab6c50ad415e72e"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["windows"]
-  revision = "a5054c7c1385fd50d9394475365355a87a7873ec"
+  revision = "062cd7e4e68206d8bab9b18396626e855c992658"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "2b8efd3738f19b342db0fa6228187c4b0eb6cf867fd8f76700f2db6d5f7c83be"
+  inputs-digest = "e24034261f04bc5e7ac51aecbe3a4d21314ed458fdc6da7c36967a2f4d7af9e5"
   solver-name = "gps-cdcl"
   solver-version = 1

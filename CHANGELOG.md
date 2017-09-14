@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- [SystemInfo type](resources/schema/system.graphql#L19) mostly working.
+
 ## [0.1.0] 2017-09-13
 
 - [SystemVersion type](resources/schema/system.graphql#L6) is the only query-ready field for now.
