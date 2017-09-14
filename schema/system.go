@@ -20,20 +20,18 @@ var (
 	}
 	type SystemInfo {		
 		### TBI
-		# containerdCommit: Commit
 		# driverStatus: [[String]] # [][2]string
 		# genericResources: [SwarmGenericResource]
-		# initCommit: Commit
-		# runcCommit: Commit
 		# runtimes: [Runtime] # Returns a map[string]Runtime
 		# systemStatus: [[String]] # [][2]string
-	
+		
 		architecture: String
 		bridgeNfIp6tables: Boolean
 		bridgeNfIptables: Boolean
 		cgroupDriver: String
 		clusterAdvertise: String
 		clusterStore: String
+		containerdCommit: SystemCommit
 		containers: Int
 		containersPaused: Int
 		containersRunning: Int
@@ -53,6 +51,7 @@ var (
 		images: Int
 		indexServerAddress: String
 		initBinary: String
+		initCommit: SystemCommit
 		ipv4Forwarding: Boolean
 		# isolation: ContainerIsolation
 		kernelMemory: Boolean
@@ -73,11 +72,17 @@ var (
 		osType: String
 		# plugins: Plugins
 		# registryConfig: RegistryConfig
+		runcCommit: SystemCommit
 		securityOptions: [String!]
 		serverVersion: String
 		swapLimit: Boolean
 		# swarm: SwarmInfo
 		systemTime: String
+	}
+
+	type SystemCommit {
+		id: ID!
+		expected: String
 	}
 	`
 )

@@ -112,6 +112,4 @@ klud/docker-gql
 * [golang/dep](https://github.com/golang/dep) for *vendoring* dependencies.
 
 ---
-> Inspired by [rm3l/docker-api-graphql](https://github.com/rm3l/docker-api-graphql)
-
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/kinda-sfw.svg)](https://forthebadge.com)

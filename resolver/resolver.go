@@ -22,6 +22,7 @@ type (
 	systemInfoResolver struct {
 		info types.Info
 	}
+	systemInfoCommitResolver types.Commit
 )
 
 func (r *Resolver) System() *systemResolver {

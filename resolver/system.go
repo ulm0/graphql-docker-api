@@ -3,10 +3,10 @@ package resolver
 import graphql "github.com/neelance/graphql-go"
 
 /*
-SystemVersion type resolvers
+	SystemVersion type resolvers
 */
 
-func (r *systemVersionResolver) ApiVersion() string {
+func (r *systemVersionResolver) APIVersion() string {
 	return r.version.APIVersion
 }
 
@@ -34,7 +34,7 @@ func (r *systemVersionResolver) KernelVersion() string {
 	return r.version.KernelVersion
 }
 
-func (r *systemVersionResolver) MinApiVersion() string {
+func (r *systemVersionResolver) MinAPIVersion() string {
 	return r.version.MinAPIVersion
 }
 
@@ -47,7 +47,7 @@ func (r *systemVersionResolver) Version() string {
 }
 
 /*
-SystemInfo type resolvers
+	SystemInfo type resolvers
 */
 
 func (r *systemInfoResolver) Architecture() *string {
@@ -74,6 +74,11 @@ func (r *systemInfoResolver) ClusterStore() *string {
 	return &r.info.ClusterStore
 }
 
+func (r *systemInfoResolver) ContainerdCommit() *systemInfoCommitResolver {
+	c := systemInfoCommitResolver(r.info.ContainerdCommit)
+	return &c
+}
+
 func (r *systemInfoResolver) Containers() *int32 {
 	c := int32(r.info.Containers)
 	return &c
@@ -94,19 +99,19 @@ func (r *systemInfoResolver) ContainersStopped() *int32 {
 	return &cs
 }
 
-func (r *systemInfoResolver) CpuCfsPeriod() *bool {
+func (r *systemInfoResolver) CPUCfsPeriod() *bool {
 	return &r.info.CPUCfsPeriod
 }
 
-func (r *systemInfoResolver) CpuCfsQuota() *bool {
+func (r *systemInfoResolver) CPUCfsQuota() *bool {
 	return &r.info.CPUCfsQuota
 }
 
-func (r *systemInfoResolver) CpuSet() *bool {
+func (r *systemInfoResolver) CPUSet() *bool {
 	return &r.info.CPUSet
 }
 
-func (r *systemInfoResolver) CpuShares() *bool {
+func (r *systemInfoResolver) CPUShares() *bool {
 	return &r.info.CPUShares
 }
 
@@ -130,11 +135,11 @@ func (r *systemInfoResolver) ExperimentalBuild() *bool {
 	return &r.info.ExperimentalBuild
 }
 
-func (r *systemInfoResolver) HttpProxy() *string {
+func (r *systemInfoResolver) HTTPProxy() *string {
 	return &r.info.HTTPProxy
 }
 
-func (r *systemInfoResolver) HttpsProxy() *string {
+func (r *systemInfoResolver) HTTPSProxy() *string {
 	return &r.info.HTTPSProxy
 }
 
@@ -153,6 +158,11 @@ func (r *systemInfoResolver) IndexServerAddress() *string {
 
 func (r *systemInfoResolver) InitBinary() *string {
 	return &r.info.InitBinary
+}
+
+func (r *systemInfoResolver) InitCommit() *systemInfoCommitResolver {
+	c := systemInfoCommitResolver(r.info.InitCommit)
+	return &c
 }
 
 func (r *systemInfoResolver) IPv4Forwarding() *bool {
@@ -228,6 +238,11 @@ func (r *systemInfoResolver) OsType() *string {
 	return &r.info.OSType
 }
 
+func (r *systemInfoResolver) RuncCommit() *systemInfoCommitResolver {
+	c := systemInfoCommitResolver(r.info.RuncCommit)
+	return &c
+}
+
 func (r *systemInfoResolver) SecurityOptions() *[]string {
 	return &r.info.SecurityOptions
 }
@@ -242,4 +257,16 @@ func (r *systemInfoResolver) SwapLimit() *bool {
 
 func (r *systemInfoResolver) SystemTime() *string {
 	return &r.info.SystemTime
+}
+
+/*
+	SystemInfoCommit type resolver
+*/
+
+func (c *systemInfoCommitResolver) Id() graphql.ID {
+	return graphql.ID(c.ID)
+}
+
+func (c *systemInfoCommitResolver) ExpecteD() *string {
+	return &c.Expected
 }
