@@ -23,6 +23,12 @@ type (
 		info types.Info
 	}
 	systemInfoCommitResolver types.Commit
+	systemInfoPluginResolver struct {
+		plugins types.PluginsInfo
+	}
+	// systemInfoRegistryResolver struct {
+	// 	registryConfig registry.ServiceConfig
+	// }
 )
 
 func (r *Resolver) System() *systemResolver {

@@ -17,17 +17,9 @@ type SystemVersion {
 }
 
 type SystemInfo {
-    # fileDescriptors: Int # @deprecated
-    # initPath: String # @Deprecated
-    # initSha1: String # @Deprecated
-    # storageDriver: String # @deprecated
-    
     ### TBI
-    # containerdCommit: Commit
     # driverStatus: [[String]] # [][2]string
     # genericResources: [SwarmGenericResource]
-    # initCommit: Commit
-    # runcCommit: Commit
     # runtimes: [Runtime] # Returns a map[string]Runtime
     # systemStatus: [[String]] # [][2]string
 
@@ -37,6 +29,7 @@ type SystemInfo {
     cgroupDriver: String
     clusterAdvertise: String
     clusterStore: String
+    containerdCommit: Commit
     containers: Int
     containersPaused: Int
     containersRunning: Int
@@ -56,6 +49,7 @@ type SystemInfo {
     images: Int
     indexServerAddress: String
     initBinary: String
+    initCommit: Commit
     ipv4Forwarding: Boolean
     # isolation: ContainerIsolation
     kernelMemory: Boolean
@@ -74,8 +68,9 @@ type SystemInfo {
     oomKillDisable: Boolean
     operatingSystem: String
     osType: String
-    # plugins: Plugins
+    plugins: Plugins
     # registryConfig: RegistryConfig
+    runcCommit: Commit
     securityOptions: [String]
     serverVersion: String
     swapLimit: Boolean

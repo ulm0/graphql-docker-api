@@ -238,6 +238,16 @@ func (r *systemInfoResolver) OsType() *string {
 	return &r.info.OSType
 }
 
+func (r *systemInfoResolver) Plugins() *systemInfoPluginResolver {
+	p := r.info.Plugins
+	return &systemInfoPluginResolver{plugins: p}
+}
+
+// func (r *systemInfoResolver) RegistryConfig() *systemInfoRegistryResolver {
+// 	reg := r.info.RegistryConfig
+// 	return &systemInfoRegistryResolver{registryConfig: *reg}
+// }
+
 func (r *systemInfoResolver) RuncCommit() *systemInfoCommitResolver {
 	c := systemInfoCommitResolver(r.info.RuncCommit)
 	return &c
@@ -270,3 +280,31 @@ func (c *systemInfoCommitResolver) Id() graphql.ID {
 func (c *systemInfoCommitResolver) ExpecteD() *string {
 	return &c.Expected
 }
+
+/*
+	SystemInfoPlugin type resolver
+*/
+
+func (r *systemInfoPluginResolver) Authorizations() *[]string {
+	return &r.plugins.Authorization
+}
+
+func (r *systemInfoPluginResolver) Logs() *[]string {
+	return &r.plugins.Log
+}
+
+func (r *systemInfoPluginResolver) Networks() *[]string {
+	return &r.plugins.Network
+}
+
+func (r *systemInfoPluginResolver) Volumes() *[]string {
+	return &r.plugins.Volume
+}
+
+/*
+	SystemInfoRegistry type resolver
+*/
+// func (r *systemInfoRegistryResolver) InsecureRegistryCidrs() *[]string {
+// 	i := string(r.registryConfig.InsecureRegistryCIDRs)
+// 	return &i
+// }

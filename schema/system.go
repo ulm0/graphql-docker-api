@@ -59,7 +59,7 @@ var (
 		labels: [String!]
 		liveRestoreEnabled: Boolean
 		loggingDriver: String
-		memTotal: Int #This was a Long, but the struct uses an Int64
+		memTotal: Int
 		memoryLimit: Boolean
 		nCpu: Int
 		nEventsListener: Int
@@ -70,7 +70,7 @@ var (
 		oomKillDisable: Boolean
 		operatingSystem: String
 		osType: String
-		# plugins: Plugins
+		plugins: Plugins
 		# registryConfig: RegistryConfig
 		runcCommit: SystemCommit
 		securityOptions: [String!]
@@ -83,6 +83,19 @@ var (
 	type SystemCommit {
 		id: ID!
 		expected: String
+	}
+
+	type Plugins{
+		authorizations: [String!]
+		logs: [String!]
+		networks: [String!]
+		volumes: [String!]
+	}
+	type RegistryConfig {
+		## TBI
+		# indexConfigs: StringAnyMap
+		insecureRegistryCidrs: [String]
+		mirrors: [String]
 	}
 	`
 )
