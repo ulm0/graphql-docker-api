@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - [SystemInfo type](resources/schema/system.graphql#L19) mostly working.
+- [Plugins type](resources/schema/system.graphql#L86) working.
+- [SystemCommit type](resources/schema/system.graphql#L81) working.
 
 ## [0.1.0] 2017-09-13
 

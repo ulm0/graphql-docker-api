@@ -61,7 +61,6 @@ func main() {
 		log.Printf("Endpoint: /query | GraphiQL: %v | Serving on %v\n", uiStatus, getPort())
 	}
 
-	// log.Printf("Endpoint: %v | Serving on %v\n", uiEndpoint(), getPort())
 	log.Fatalln(http.ListenAndServe(getPort(), handlers.LoggingHandler(os.Stdout, http.DefaultServeMux)))
 }
 

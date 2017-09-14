@@ -29,7 +29,7 @@ type SystemInfo {
     cgroupDriver: String
     clusterAdvertise: String
     clusterStore: String
-    containerdCommit: Commit
+    containerdCommit: SystemCommit
     containers: Int
     containersPaused: Int
     containersRunning: Int
@@ -49,7 +49,7 @@ type SystemInfo {
     images: Int
     indexServerAddress: String
     initBinary: String
-    initCommit: Commit
+    initCommit: SystemCommit
     ipv4Forwarding: Boolean
     # isolation: ContainerIsolation
     kernelMemory: Boolean
@@ -70,13 +70,18 @@ type SystemInfo {
     osType: String
     plugins: Plugins
     # registryConfig: RegistryConfig
-    runcCommit: Commit
+    runcCommit: SystemCommit
     securityOptions: [String]
     serverVersion: String
     swapLimit: Boolean
     # swarm: SwarmInfo
     systemTime: String
 }
+
+type SystemCommit {
+		id: ID!
+		expected: String
+	}
 
 type Plugins {
     authorizations: [String]
