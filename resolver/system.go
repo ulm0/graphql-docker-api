@@ -1,6 +1,8 @@
 package resolver
 
-import graphql "github.com/neelance/graphql-go"
+import (
+	graphql "github.com/neelance/graphql-go"
+)
 
 /*
 	SystemVersion type resolvers
@@ -243,10 +245,10 @@ func (r *systemInfoResolver) Plugins() *systemInfoPluginResolver {
 	return &systemInfoPluginResolver{plugins: p}
 }
 
-// func (r *systemInfoResolver) RegistryConfig() *systemInfoRegistryResolver {
-// 	reg := r.info.RegistryConfig
-// 	return &systemInfoRegistryResolver{registryConfig: *reg}
-// }
+func (r *systemInfoResolver) RegistryConfig() *systemInfoRegistryResolver {
+	reg := r.info.RegistryConfig
+	return &systemInfoRegistryResolver{registryConfig: *reg}
+}
 
 func (r *systemInfoResolver) RuncCommit() *systemInfoCommitResolver {
 	c := systemInfoCommitResolver(r.info.RuncCommit)
@@ -277,8 +279,8 @@ func (c *systemInfoCommitResolver) Id() graphql.ID {
 	return graphql.ID(c.ID)
 }
 
-func (c *systemInfoCommitResolver) ExpecteD() *string {
-	return &c.Expected
+func (c *systemInfoCommitResolver) ExpecteD() string {
+	return c.Expected
 }
 
 /*
@@ -304,7 +306,52 @@ func (r *systemInfoPluginResolver) Volumes() *[]string {
 /*
 	SystemInfoRegistry type resolver
 */
-// func (r *systemInfoRegistryResolver) InsecureRegistryCidrs() *[]string {
-// 	i := string(r.registryConfig.InsecureRegistryCIDRs)
-// 	return &i
+
+func (r *systemInfoRegistryResolver) AllowNondistributableArtifactsCidrs() *[]string {
+	// Starts an slice with len 0 and then appends elements to it
+	// So it will not output empty string
+	// Such as:
+	// "registryConfig": {
+	//      "allowNondistributableArtifactsCidrs": [
+	//        "", # This occurs when the slice is started with len 1
+	//      ]
+	cidrs := make([]string, 0)
+	for _, cidr := range r.registryConfig.AllowNondistributableArtifactsCIDRs {
+		cidrs = append(cidrs, cidr.String())
+	}
+	return &cidrs
+}
+
+func (r *systemInfoRegistryResolver) AllowNondistributableArtifactsHostnames() *[]string {
+	return &r.registryConfig.AllowNondistributableArtifactsHostnames
+}
+
+// WIP
+// func (r *systemInfoRegistryResolver) IndexConfigs() *[]string {
+// 	i := r.registryConfig.IndexConfigs
+// 	indexes := make([]string, 0)
+// 	for _, index := range i {
+// 		indexes = append(indexes, index.Name)
+// 	}
+// 	return &indexes
 // }
+
+func (r *systemInfoRegistryResolver) InsecureRegistryCidrs() *[]string {
+	// Starts an slice with len 0 and then appends elements to it
+	// So it will not output empty string
+	// Such as:
+	// "registryConfig": {
+	//      "insecureRegistryCidrs": [
+	//        "", # This occurs when the slice is started with len 1
+	//        "127.0.0.0/8"
+	//      ]
+	cidrs := make([]string, 0)
+	for _, cidr := range r.registryConfig.InsecureRegistryCIDRs {
+		cidrs = append(cidrs, cidr.String())
+	}
+	return &cidrs
+}
+
+func (r *systemInfoRegistryResolver) Mirrors() *[]string {
+	return &r.registryConfig.Mirrors
+}

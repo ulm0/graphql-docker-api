@@ -71,7 +71,7 @@ var (
 		operatingSystem: String
 		osType: String
 		plugins: Plugins
-		# registryConfig: RegistryConfig
+		registryConfig: RegistryConfig
 		runcCommit: SystemCommit
 		securityOptions: [String!]
 		serverVersion: String
@@ -82,7 +82,7 @@ var (
 
 	type SystemCommit {
 		id: ID!
-		expected: String
+		expected: String!
 	}
 
 	type Plugins{
@@ -94,8 +94,10 @@ var (
 	type RegistryConfig {
 		## TBI
 		# indexConfigs: StringAnyMap
-		insecureRegistryCidrs: [String]
-		mirrors: [String]
+		allowNondistributableArtifactsCidrs: [String!]
+		allowNondistributableArtifactsHostnames: [String!]
+		insecureRegistryCidrs: [String!]
+		mirrors: [String!]
 	}
 	`
 )
