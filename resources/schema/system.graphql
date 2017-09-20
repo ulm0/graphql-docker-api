@@ -79,9 +79,9 @@ type SystemInfo {
 }
 
 type SystemCommit {
-    id: ID!
-    expected: String!
-}
+		id: ID!
+		expected: String
+	}
 
 type Plugins {
     authorizations: [String!]
