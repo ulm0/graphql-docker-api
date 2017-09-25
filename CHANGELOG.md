@@ -7,9 +7,26 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.1.1] 2017-09-25
+
 ### Added
 
 - Types:
+  - [Swarm](resources/schema/swarm.graphql#L1) mostly working.
+  - [SwarmSpec](resources/schema/swarm.graphql#L11) mostly working.
+  - [OrchestrationConfig](resources/schema/swarm.graphql#L23) working.
+  - [RaftConfig](resources/schema/swarm.graphql#L27) working.
+  - [DispatcherConfig](resources/schema/swarm.graphql#L35) working.
+  - [CaConfig](resources/schema/swarm.graphql#L39) mostly working.
+  - [ExternalCa](resources/schema/swarm.graphql#L44), kinda working.
+  - [EncryptionConfig](resources/schema/swarm.graphql#L51) working.
+  - [TaskDefaults](resources/schema/swarm.graphql#L55) not working properly.
+  - [Driver](resources/schema/swarm.graphql#L59) not working properly.
+  - [JoinTokens](resources/schema/swarm.graphql#L65) working.
+  - [SwarmInfo](resources/schema/swarm.graphql#L161) mostly working.
+  - [SwarmCluster](resources/schema/swarm.graphql#L173) mostly working.
+  - [TLSInfo](resources/schema/swarm.graphql#L187) fully working.
+  - [RemoteManager](resources/schema/swarm.graphql#L193) fully working.
   - [SystemInfo](resources/schema/system.graphql#L19) mostly working.
   - [RegistryConfig](resources/schema/system.graphql#L93) mostly working.
   - [Plugins](resources/schema/system.graphql#L86) fully working.

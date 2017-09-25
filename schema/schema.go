@@ -4,6 +4,7 @@ var (
 	query = `
 	type Query {
 			system: System
+			swarm: Swarm
 	}
 	`
 	schema = `
@@ -12,5 +13,5 @@ var (
 	}
 	`
 	// Schema to be exported
-	Schema = schema + query + system
+	Schema = schema + query + system + swarm
 )

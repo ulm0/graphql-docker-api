@@ -76,7 +76,7 @@ var (
 		securityOptions: [String!]
 		serverVersion: String
 		swapLimit: Boolean
-		# swarm: SwarmInfo
+		swarm: SwarmInfo
 		systemTime: String
 	}
 

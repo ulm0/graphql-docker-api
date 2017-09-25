@@ -33,12 +33,12 @@ type RaftConfig {
 }
 
 type DispatcherConfig {
-    heartbeatPeriod: Long
+    heartbeatPeriod: String
 }
 
 type CaConfig {
     externalCas: [ExternalCa]
-    nodeCertExpiry: Long
+    nodeCertExpiry: String
 }
 
 type ExternalCa {
@@ -148,13 +148,13 @@ enum NodeRole {
 }
 
 type NodeInfo {
-    createdAt: Date
+    createdAt: String
     description: NodeDescription
     id: ID!
     managerStatus: ManagerStatus
     spec: NodeSpec
     status: NodeStatus
-    updatedAt: Date
+    updatedAt: String
     version: SwarmVersion
 }
 
@@ -171,17 +171,17 @@ type SwarmInfo {
 }
 
 type SwarmCluster {
-    createdAt: Date
+    createdAt: String
     id: ID!
     rootRotationInProgress: Boolean
     swarmSpec: SwarmSpec
     tlsInfo: TLSInfo
-    updatedAt: Date
+    updatedAt: String
     version: SwarmVersion
 }
 
 type SwarmVersion {
-    index: Long
+    index: Int
 }
 
 type TLSInfo{
