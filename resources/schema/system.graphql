@@ -1,8 +1,7 @@
 type System {
-    info: SystemInfo!
-    version: SystemVersion!
+    info: SystemInfo
+    version: SystemVersion
 }
-
 type SystemVersion {
     apiVersion: String!
     arch: String!
@@ -15,7 +14,6 @@ type SystemVersion {
     os: String!
     version: String!
 }
-
 type SystemInfo {
     ### TBI
     # driverStatus: [[String]] # [][2]string
@@ -51,10 +49,10 @@ type SystemInfo {
     initBinary: String
     initCommit: SystemCommit
     ipv4Forwarding: Boolean
-    # isolation: ContainerIsolation
+    isolation: String #ContainerIsolation
     kernelMemory: Boolean
     kernelVersion: String
-    labels: [String]
+    labels: [String!]
     liveRestoreEnabled: Boolean
     loggingDriver: String
     memTotal: Int
@@ -71,30 +69,28 @@ type SystemInfo {
     plugins: Plugins
     registryConfig: RegistryConfig
     runcCommit: SystemCommit
-    securityOptions: [String]
+    securityOptions: [String!]
     serverVersion: String
     swapLimit: Boolean
-    # swarm: SwarmInfo
+    swarm: SwarmInfo
     systemTime: String
 }
 
 type SystemCommit {
-		id: ID!
-		expected: String
-	}
+    id: ID!
+    expected: String!
+}
 
-type Plugins {
+type Plugins{
     authorizations: [String!]
     logs: [String!]
     networks: [String!]
     volumes: [String!]
 }
-
 type RegistryConfig {
-    ## TBI
-    # indexConfigs: StringAnyMap
     allowNondistributableArtifactsCidrs: [String!]
     allowNondistributableArtifactsHostnames: [String!]
+    indexConfigs: [String!]
     insecureRegistryCidrs: [String!]
     mirrors: [String!]
 }

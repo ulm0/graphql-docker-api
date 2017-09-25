@@ -37,6 +37,7 @@ type (
 	taskDefaultsResolver        struct{ TaskDefault swarm.TaskDefaults }
 	swarmDriverResolver         struct{ LogDriver *swarm.Driver }
 	jointTokensResolver         struct{ swarm.JoinTokens }
+	unlockKeyResolver           types.SwarmUnlockKeyResponse // struct{ UnlockKey types.SwarmUnlockKeyResponse }
 	swarmInfoResolver           struct{ Swarm swarm.Info }
 	swarmClusterResolver        struct{ SwarmCluster *swarm.ClusterInfo }
 	swarmVersionResolver        swarm.Version

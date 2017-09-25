@@ -10,10 +10,24 @@ func (r *swarmResolver) JoinTokens() *jointTokensResolver {
 	tokens := r.Swarm.JoinTokens
 	return &jointTokensResolver{JoinTokens: tokens}
 }
+func (r *swarmResolver) RootRotationInProgress() *bool {
+	return &r.Swarm.RootRotationInProgress
+}
 func (r *swarmResolver) SwarmSpec() *swarmSpecResolver {
 	spec := r.Swarm.Spec
 	return &swarmSpecResolver{SwarmSpec: spec}
 }
+func (r *swarmResolver) TLSInfo() *tlsInfoResolver {
+	tls := r.Swarm.TLSInfo
+	return &tlsInfoResolver{TLSInfo: tls}
+}
+func (r *swarmResolver) UnlockKey() *unlockKeyResolver {
+	cli := clientInit()
+	k, _ := cli.SwarmGetUnlockKey(ctx)
+	key := unlockKeyResolver(k)
+	return &key
+}
+func (r *swarmResolver) UpdatedAt() *string { return ptrString(r.Swarm.CreatedAt.String()) }
 func (r *swarmResolver) Version() *swarmVersionResolver {
 	ver := swarmVersionResolver(r.Swarm.Version)
 	return &ver
@@ -108,6 +122,10 @@ func (r *swarmDriverResolver) NAME() *string { return &r.LogDriver.Name }
 
 func (r *jointTokensResolver) Manager() *string { return &r.JoinTokens.Manager }
 func (r *jointTokensResolver) Worker() *string  { return &r.JoinTokens.Worker }
+
+/* UnlockKey type resolver */
+
+func (r *unlockKeyResolver) UnlockKEY() *string { return ptrString(r.UnlockKey) }
 
 /*	SwarmInfo type resolver */
 

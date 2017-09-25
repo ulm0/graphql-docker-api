@@ -6,14 +6,15 @@ var (
 	 	createdAt: String
 	 	id: ID!
 		joinTokens: JoinTokens
-	# 	nodes(filter: NodeFilter): [SwarmNode]
-	 	swarmSpec: SwarmSpec
-	#	unlockKey: String #UnlockKey
-	 	version: SwarmVersion
+		rootRotationInProgress: Boolean
+		swarmSpec: SwarmSpec
+		tlsInfo: TLSInfo
+		unlockKey: UnlockKey
+		updatedAt: String
+		version: SwarmVersion
 	}
 	
 	type SwarmSpec {
-		# annotations: [Annotations]
 	 	caConfig: CaConfig
 	 	dispatcher: DispatcherConfig
 	 	encryptionConfig: EncryptionConfig
@@ -72,96 +73,9 @@ var (
 		worker: String
 	}
 	
-	# type UnlockKey {
-	# 	unlockKey: String
-	# }
-	
-	# type SwarmNode {
-	# 	createdAt: Date
-	# 	description: NodeDescription
-	# 	details: NodeInfo
-	# 	id: String
-	# 	managerStatus: ManagerStatus
-	# 	spec: NodeSpec
-	# 	status: NodeStatus
-	# 	updatedAt: Date
-	# 	version: SwarmVersion
-	# }
-	
-	# type NodeSpec {
-	# 	availability: String
-	# 	labels: StringAnyMap
-	# 	name: String
-	# 	role: String
-	# }
-	
-	# type NodeDescription {
-	# 	engine: EngineConfig
-	# 	hostname: String
-	# 	platform: Platform
-	# 	resources: Resources
-	# }
-	
-	# type Platform {
-	# 	architecture: String
-	# 	os: String
-	# }
-	
-	# type Resources {
-	# 	memoryBytes: Long
-	# 	nanoCpus: Long
-	# }
-	
-	# type EngineConfig {
-	# 	engineVersion: String
-	# 	labels: StringAnyMap
-	# 	plugins: [EnginePlugin]
-	# }
-	
-	# type EnginePlugin {
-	# 	name: String
-	# 	type: String
-	# }
-	
-	# type NodeStatus {
-	# 	addr: String
-	# 	state: String
-	# }
-	
-	# type ManagerStatus {
-	# 	addr: String
-	# 	leader: Boolean
-	# 	reachability: String
-	# }
-	
-	# input NodeFilter {
-	# 	id: [String]
-	# 	label: [String]
-	# 	membership: [NodeMembership]
-	# 	name: [String]
-	# 	role: [NodeRole]
-	# }
-	
-	# enum NodeMembership {
-	# 	accepted
-	# 	pending
-	# }
-	
-	# enum NodeRole {
-	# 	manager
-	# 	worker
-	# }
-	
-	# type NodeInfo {
-	# 	createdAt: Date
-	# 	description: NodeDescription
-	# 	id: ID!
-	# 	managerStatus: ManagerStatus
-	# 	spec: NodeSpec
-	# 	status: NodeStatus
-	# 	updatedAt: Date
-	# 	version: SwarmVersion
-	# }
+	type UnlockKey {
+	 	unlockKey: String
+	}
 	
 	type SwarmInfo {
 		cluster: SwarmCluster
