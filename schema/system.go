@@ -18,13 +18,13 @@ var (
 		os: String!
 		version: String!
 	}
-	type SystemInfo {		
+	type SystemInfo {
 		### TBI
 		# driverStatus: [[String]] # [][2]string
 		# genericResources: [SwarmGenericResource]
 		# runtimes: [Runtime] # Returns a map[string]Runtime
 		# systemStatus: [[String]] # [][2]string
-		
+
 		architecture: String
 		bridgeNfIp6tables: Boolean
 		bridgeNfIptables: Boolean
@@ -53,7 +53,7 @@ var (
 		initBinary: String
 		initCommit: SystemCommit
 		ipv4Forwarding: Boolean
-		# isolation: ContainerIsolation
+		isolation: String #ContainerIsolation
 		kernelMemory: Boolean
 		kernelVersion: String
 		labels: [String!]
@@ -92,10 +92,9 @@ var (
 		volumes: [String!]
 	}
 	type RegistryConfig {
-		## TBI
-		# indexConfigs: StringAnyMap
 		allowNondistributableArtifactsCidrs: [String!]
 		allowNondistributableArtifactsHostnames: [String!]
+		indexConfigs: [String!]
 		insecureRegistryCidrs: [String!]
 		mirrors: [String!]
 	}

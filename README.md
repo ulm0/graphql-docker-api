@@ -20,7 +20,7 @@
 * Get the package: `go get -d gitlab.com/klud/graphql-docker-api/cmd/gdapi`
 * Dependencies
   * **Not using [`dep`](README.md#open-source-libraries-and-tools).** Go to the project folder with `cd $GOPATH/src/gitlab.com/klud/graphql-docker-api/cmd/gdapi` and `go get -d ./`, this will download the depedencies needed, once that's done build the package with `go build`.
-  * **Using [`dep`](README.md#open-source-libraries-and-tools).** Go to the project folder with `cd $GOPATH/src/gitlab.com/klud/graphql-docker-api`, and run `dep install`, now get to `$GOPATH/src/gitlab.com/klud/graphql-docker-api/cmd/gdapi` and build the package with `go build`.
+  * **Using [`dep`](README.md#open-source-libraries-and-tools).** Go to the project folder with `cd $GOPATH/src/gitlab.com/klud/graphql-docker-api`, and run `dep ensure`, now get to `$GOPATH/src/gitlab.com/klud/graphql-docker-api/cmd/gdapi` and build the package with `go build`.
 
 **That's pretty much it. Congrats You have GraphQL Docker API on your system now.**
 
