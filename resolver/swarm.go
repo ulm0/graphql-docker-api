@@ -7,22 +7,18 @@ import graphql "github.com/neelance/graphql-go"
 func (r *swarmResolver) CreatedAt() *string { return ptrString(r.Swarm.CreatedAt.String()) }
 func (r *swarmResolver) Id() graphql.ID     { return graphql.ID(r.Swarm.ID) }
 func (r *swarmResolver) JoinTokens() *jointTokensResolver {
-	tokens := r.Swarm.JoinTokens
-	return &jointTokensResolver{JoinTokens: tokens}
+	return &jointTokensResolver{JoinTokens: r.Swarm.JoinTokens}
 }
 func (r *swarmResolver) RootRotationInProgress() *bool {
 	return &r.Swarm.RootRotationInProgress
 }
 func (r *swarmResolver) SwarmSpec() *swarmSpecResolver {
-	spec := r.Swarm.Spec
-	return &swarmSpecResolver{SwarmSpec: spec}
+	return &swarmSpecResolver{SwarmSpec: r.Swarm.Spec}
 }
 func (r *swarmResolver) TLSInfo() *tlsInfoResolver {
-	tls := r.Swarm.TLSInfo
-	return &tlsInfoResolver{TLSInfo: tls}
+	return &tlsInfoResolver{TLSInfo: r.Swarm.TLSInfo}
 }
 func (r *swarmResolver) UnlockKey() *unlockKeyResolver {
-	cli := clientInit()
 	k, _ := cli.SwarmGetUnlockKey(ctx)
 	key := unlockKeyResolver(k)
 	return &key
@@ -36,12 +32,10 @@ func (r *swarmResolver) Version() *swarmVersionResolver {
 /*	SwarmSpec type resolver */
 
 func (r *swarmSpecResolver) CaConfig() *caConfigResolver {
-	ca := r.SwarmSpec.CAConfig
-	return &caConfigResolver{CaConfig: ca}
+	return &caConfigResolver{CaConfig: r.SwarmSpec.CAConfig}
 }
 func (r *swarmSpecResolver) Dispatcher() *dispatcherConfigResolver {
-	dis := r.SwarmSpec.Dispatcher
-	return &dispatcherConfigResolver{DispatcherConfig: dis}
+	return &dispatcherConfigResolver{DispatcherConfig: r.SwarmSpec.Dispatcher}
 }
 func (r *swarmSpecResolver) EncryptionConfig() *encryptionConfigResolver {
 	enc := encryptionConfigResolver(r.SwarmSpec.EncryptionConfig)
@@ -53,12 +47,10 @@ func (r *swarmSpecResolver) Orchestration() *orchestrationConfigResolver {
 	return &orc
 }
 func (r *swarmSpecResolver) Raft() *raftConfigResolver {
-	raft := r.SwarmSpec.Raft
-	return &raftConfigResolver{RaftConfig: raft}
+	return &raftConfigResolver{RaftConfig: r.SwarmSpec.Raft}
 }
 func (r *swarmSpecResolver) TaskDefaults() *taskDefaultsResolver {
-	task := r.SwarmSpec.TaskDefaults
-	return &taskDefaultsResolver{TaskDefault: task}
+	return &taskDefaultsResolver{TaskDefault: r.SwarmSpec.TaskDefaults}
 }
 
 /*	OrchestrationConfig type resolver */
@@ -109,8 +101,7 @@ func (r *encryptionConfigResolver) AutoLOCKManagers() *bool { return &r.AutoLock
 /* TaskDefault type resolver */
 
 func (r *taskDefaultsResolver) LogDriver() *swarmDriverResolver {
-	driver := r.TaskDefault.LogDriver
-	return &swarmDriverResolver{LogDriver: driver}
+	return &swarmDriverResolver{LogDriver: r.TaskDefault.LogDriver}
 }
 
 /* SwarmDriver type resolver */
@@ -130,8 +121,7 @@ func (r *unlockKeyResolver) UnlockKEY() *string { return ptrString(r.UnlockKey) 
 /*	SwarmInfo type resolver */
 
 func (r *swarmInfoResolver) Cluster() *swarmClusterResolver {
-	cluster := r.Swarm.Cluster
-	return &swarmClusterResolver{SwarmCluster: cluster}
+	return &swarmClusterResolver{SwarmCluster: r.Swarm.Cluster}
 }
 func (r *swarmInfoResolver) ControlAvailable() *bool { return &r.Swarm.ControlAvailable }
 func (r *swarmInfoResolver) Error() *string          { return &r.Swarm.Error }
@@ -158,12 +148,10 @@ func (r *swarmClusterResolver) RootRotationInProgress() *bool {
 	return &r.SwarmCluster.RootRotationInProgress
 }
 func (r *swarmClusterResolver) SwarmSpec() *swarmSpecResolver {
-	spec := r.SwarmCluster.Spec
-	return &swarmSpecResolver{SwarmSpec: spec}
+	return &swarmSpecResolver{SwarmSpec: r.SwarmCluster.Spec}
 }
 func (r *swarmClusterResolver) TLSInfo() *tlsInfoResolver {
-	tls := r.SwarmCluster.TLSInfo
-	return &tlsInfoResolver{TLSInfo: tls}
+	return &tlsInfoResolver{TLSInfo: r.SwarmCluster.TLSInfo}
 }
 func (r *swarmClusterResolver) UpdatedAt() *string {
 	return ptrString(r.SwarmCluster.UpdatedAt.String())

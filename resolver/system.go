@@ -7,6 +7,13 @@ import (
 	graphql "github.com/neelance/graphql-go"
 )
 
+/* Version retrieves server version related info */
+
+func (r *systemResolver) Version() *systemVersionResolver {
+	v, _ := r.system.ServerVersion(ctx)
+	return &systemVersionResolver{version: v}
+}
+
 /*	SystemVersion type resolvers */
 
 func (r *systemVersionResolver) APIVersion() string    { return r.version.APIVersion }
@@ -19,6 +26,13 @@ func (r *systemVersionResolver) KernelVersion() string { return r.version.Kernel
 func (r *systemVersionResolver) MinAPIVersion() string { return r.version.MinAPIVersion }
 func (r *systemVersionResolver) Os() string            { return r.version.Os }
 func (r *systemVersionResolver) Version() string       { return r.version.Version }
+
+/* Info retrieves a docker host info */
+
+func (r *systemResolver) Info() *systemInfoResolver {
+	i, _ := r.system.Info(ctx)
+	return &systemInfoResolver{info: i}
+}
 
 /*	SystemInfo type resolvers */
 
@@ -79,12 +93,11 @@ func (r *systemInfoResolver) OomKillDisable() *bool     { return &r.info.OomKill
 func (r *systemInfoResolver) OperatingSystem() *string  { return &r.info.OperatingSystem }
 func (r *systemInfoResolver) OsType() *string           { return &r.info.OSType }
 func (r *systemInfoResolver) Plugins() *systemInfoPluginResolver {
-	p := r.info.Plugins
-	return &systemInfoPluginResolver{plugins: p}
+	return &systemInfoPluginResolver{plugins: r.info.Plugins}
 }
 func (r *systemInfoResolver) RegistryConfig() *systemInfoRegistryResolver {
-	reg := r.info.RegistryConfig
-	return &systemInfoRegistryResolver{registryConfig: *reg}
+	// reg := r.info.RegistryConfig
+	return &systemInfoRegistryResolver{registryConfig: *r.info.RegistryConfig}
 }
 func (r *systemInfoResolver) RuncCommit() *systemInfoCommitResolver {
 	return ptrCommit(r.info.RuncCommit)
@@ -93,8 +106,8 @@ func (r *systemInfoResolver) SecurityOptions() *[]string { return &r.info.Securi
 func (r *systemInfoResolver) ServerVersion() *string     { return &r.info.ServerVersion }
 func (r *systemInfoResolver) SwapLimit() *bool           { return &r.info.SwapLimit }
 func (r *systemInfoResolver) Swarm() *swarmInfoResolver {
-	swarm := r.info.Swarm
-	return &swarmInfoResolver{Swarm: swarm}
+	// swarm := r.info.Swarm
+	return &swarmInfoResolver{Swarm: r.info.Swarm}
 }
 func (r *systemInfoResolver) SystemTime() *string { return &r.info.SystemTime }
 
