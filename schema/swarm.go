@@ -1,7 +1,6 @@
 package schema
 
-var (
-	swarm = `
+var swarm = `
 	type Swarm {
 	 	createdAt: String
 	 	id: ID!
@@ -114,4 +113,3 @@ var (
 		nodeId: String
 	}
 	`
-)

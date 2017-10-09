@@ -1,7 +1,6 @@
 package schema
 
-var (
-	system = `
+var system = `
 	type System {
 		info: SystemInfo
 		version: SystemVersion
@@ -99,4 +98,3 @@ var (
 		mirrors: [String!]
 	}
 	`
-)
