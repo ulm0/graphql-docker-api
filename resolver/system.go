@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 
-	graphql "github.com/neelance/graphql-go"
+	graphql "gitlab.com/klud/graphql-go"
 )
 
 /* Version retrieves server version related info */

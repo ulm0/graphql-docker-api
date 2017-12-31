@@ -1,6 +1,6 @@
 package resolver
 
-import graphql "github.com/neelance/graphql-go"
+import graphql "gitlab.com/klud/graphql-go"
 
 /* Swarm type resolver */
 

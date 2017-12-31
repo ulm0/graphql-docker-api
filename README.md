@@ -32,7 +32,7 @@
 docker run -d \
 --name docker-gql \
 -p 8080:8080 \
--e UI_ENDPOINT="/api" \
+-e API_ENDPOINT="/api" \
 -v /var/run/docker.sock:/var/run/docker.sock \
 klud/docker-gql
 ```
@@ -47,7 +47,7 @@ klud/docker-gql
 docker run -d \
 --name docker-gql \
 -p 8080:8080 \
--e UI_ENDPOINT="/api" \
+-e API_ENDPOINT="/api" \
 -e DOCKER_HOST="http://<host>:<port>" \
 klud/docker-gql
 ```
@@ -58,7 +58,7 @@ klud/docker-gql
 docker run -d \
 --name docker-gql \
 -p 8080:8080 \
--e UI_ENDPOINT="/api" \
+-e API_ENDPOINT="/api" \
 -e DOCKER_HOST="https://<host>:<port>" \
 -v /path/to/folder/containing/the/docker/certs:/etc/docker \
 klud/docker-gql
@@ -70,14 +70,13 @@ klud/docker-gql
 * `DOCKER_HOST`: Host the API will retrieve information from (default: `"/var/run/docker.sock"`).
 * `GQL_PORT`: Port the API will listen on (default: `":8080"`).
 * `GRAPHIQL`: It's enabled by default, `GRAPHIQL=0` must be set in order to disable it.
-* `UI_ENDPOINT`: Endpoint GraphiQL will work on (default: `"/graphql"`).
+* `API_ENDPOINT`: Endpoint for the API (default: `"/graphql"`).
 
 ### Notes
 
 * If using a Docker Remote API, this must be specified with the either HTTP or HTTPS protocols (e.g,: `DOCKER_HOST="http://<host>:<port>"`).
 * When using HTTPS, the TLS certs must be placed in `/etc/docker` or the `/path/to/folder/containing/the/docker/certs` must be mounted under `/etc/docker` inside the running container, and must follow the semantics behind the [DOCKER_CERT_PATH](https://docs.docker.com/engine/security/https/#create-a-ca-server-and-client-keys-with-openssl) env var.
-* `GRAPHIQL` can be reached at the `UI_ENDPOINT`; disabling is advised when using in production.
-* If GraphiQL is disabled, `UI_ENDPOINT` must not be set at all.
+* `GRAPHIQL` can be reached at the `API_ENDPOINT`; disabling is advised when using in production, you can do so by setting `GRAPHIQL=0`.
 
 ## TODO
 
@@ -107,9 +106,10 @@ klud/docker-gql
 ## Open-Source libraries and tools
 
 * [docker/client](https://github.com/moby/moby/tree/master/client)
-* [neelance/graphql-go](https://github.com/neelance/graphql-go)
-* [gorilla/handlers](https://github.com/gorilla/handlers) for console logging.
-* [golang/dep](https://github.com/golang/dep) for *vendoring* dependencies.
+* [golang/dep](https://github.com/golang/dep)
+* [gorilla/mux](https://github.com/gorilla/mux)
+* [neelance/graphql-go](https://gitlab.com/klud/graphql-go)
+* [urfave/negroni](https://github.com/urfave/negroni)
 
 ---
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/kinda-sfw.svg)](https://forthebadge.com)

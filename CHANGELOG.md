@@ -42,7 +42,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Using [neelance/graphql-go](https://github.com/neelance/graphql-go).
+- Using [neelance/graphql-go](https://gitlab.com/klud/graphql-go).
 - `API_ENDPOINT` is now `UI_ENDPOINT`.
 - `GQL_PORT` is available again.
 
@@ -59,7 +59,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Moving from [graphql-go/graphql](https://github.com/graphql-go/graphql) to [neelance/graphql-go](https://github.com/neelance/graphql-go).
+- Moving from [graphql-go/graphql](https://github.com/graphql-go/graphql) to [neelance/graphql-go](https://gitlab.com/klud/graphql-go).
 - `API_ENDPOINT`, `GQL_PORT` & `GRAPHIQL` are temporarily unavailable to be set in the Docker image.
 
 ### Removed
