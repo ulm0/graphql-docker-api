@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.1.2] 2017-12-30
+
 ### Changed
 
 - [Swarm](resources/schema/swarm.graphql#L1) updated fields.
+- `UI_ENDPOINT` is now `API_ENDPOINT`
+- Using personal fork of `graphql-go`
 
 ## [0.1.1] 2017-09-25
 

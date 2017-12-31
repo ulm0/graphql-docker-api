@@ -32,16 +32,16 @@
   version = "v0.3.2"
 
 [[projects]]
-  name = "github.com/gorilla/handlers"
+  name = "github.com/gorilla/context"
   packages = ["."]
-  revision = "a4043c62cc2329bacda331d33fc908ab11ef0ec3"
-  version = "v1.2.1"
+  revision = "1ea25387ff6f684839d82767c1733ff4d4d15d0a"
+  version = "v1.1"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/neelance/graphql-go"
-  packages = [".","errors","internal/common","internal/exec","internal/exec/packer","internal/exec/resolvable","internal/exec/selected","internal/query","internal/schema","internal/validation","introspection","log","relay","trace"]
-  revision = "10eb949b8f4439212ef19d5d924c47c10c110cc7"
+  name = "github.com/gorilla/mux"
+  packages = ["."]
+  revision = "7f08801859139f86dfafd1c296e2cba9a80d292e"
+  version = "v1.6.0"
 
 [[projects]]
   name = "github.com/opentracing/opentracing-go"
@@ -56,20 +56,32 @@
   version = "v0.8.0"
 
 [[projects]]
+  name = "github.com/urfave/negroni"
+  packages = ["."]
+  revision = "5dbbc83f748fc3ad38585842b0aedab546d0ea1e"
+  version = "v0.3.0"
+
+[[projects]]
+  branch = "master"
+  name = "gitlab.com/klud/graphql-go"
+  packages = [".","errors","internal/common","internal/exec","internal/exec/packer","internal/exec/resolvable","internal/exec/selected","internal/query","internal/schema","internal/validation","introspection","log","relay","trace"]
+  revision = "bfbadfe7fdac53a50f74070b5f28741fe08ea44f"
+
+[[projects]]
   branch = "master"
   name = "golang.org/x/net"
   packages = ["context","context/ctxhttp","proxy"]
-  revision = "0744d001aa8470aaa53df28d32e5ceeb8af9bd70"
+  revision = "d866cfc389cec985d6fda2859936a575a55a3ab6"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["windows"]
-  revision = "429f518978ab01db8bb6f44b66785088e7fba58b"
+  revision = "83801418e1b59fb1880e363299581ee543af32ca"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "fcb672e6b6164fa0ff82aa910ca97594577c9e4e1ca26279f8869164549a0dad"
+  inputs-digest = "2850c11564002147e04e8e9272ace93a3629ff1b97609a5bff7cfcc8b3569105"
   solver-name = "gps-cdcl"
   solver-version = 1
