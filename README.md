@@ -1,6 +1,6 @@
 # GraphQL Docker API
 
-[![pipeline status](https://gitlab.com/klud/graphql-docker-api/badges/master/pipeline.svg)](https://gitlab.com/klud/graphql-docker-api/commits/master) [![Go Report Card](https://goreportcard.com/badge/gitlab.com/klud/graphql-docker-api)](https://goreportcard.com/report/gitlab.com/klud/graphql-docker-api) [![](https://images.microbadger.com/badges/version/klud/docker-gql.svg)](https://microbadger.com/images/klud/docker-gql "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/klud/docker-gql.svg)](https://microbadger.com/images/klud/docker-gql "Get your own image badge on microbadger.com") [![Docker Pulls](https://img.shields.io/docker/pulls/klud/docker-gql.svg)](https://hub.docker.com/r/klud/docker-gql/) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
+[![pipeline status](https://gitlab.com/ulm0/graphql-docker-api/badges/master/pipeline.svg)](https://gitlab.com/ulm0/graphql-docker-api/commits/master) [![Go Report Card](https://goreportcard.com/badge/gitlab.com/ulm0/graphql-docker-api)](https://goreportcard.com/report/gitlab.com/ulm0/graphql-docker-api) [![](https://images.microbadger.com/badges/version/ulm0/docker-gql.svg)](https://microbadger.com/images/ulm0/docker-gql "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/ulm0/docker-gql.svg)](https://microbadger.com/images/ulm0/docker-gql "Get your own image badge on microbadger.com") [![Docker Pulls](https://img.shields.io/docker/pulls/ulm0/docker-gql.svg)](https://hub.docker.com/r/ulm0/docker-gql/) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
 
 ![Logo](resources/docker-go-graphql_400.png)
 
@@ -17,10 +17,10 @@
 
 ### Building from source
 
-* Get the package: `go get -d gitlab.com/klud/graphql-docker-api/cmd/gdapi`
+* Get the package: `go get -d gitlab.com/ulm0/graphql-docker-api/cmd/gdapi`
 * Dependencies
-  * **Not using [`dep`](README.md#open-source-libraries-and-tools).** Go to the project folder with `cd $GOPATH/src/gitlab.com/klud/graphql-docker-api/cmd/gdapi` and `go get -d ./`, this will download the depedencies needed, once that's done build the package with `go build`.
-  * **Using [`dep`](README.md#open-source-libraries-and-tools).** Go to the project folder with `cd $GOPATH/src/gitlab.com/klud/graphql-docker-api`, and run `dep ensure`, now get to `$GOPATH/src/gitlab.com/klud/graphql-docker-api/cmd/gdapi` and build the package with `go build`.
+  * **Not using [`dep`](README.md#open-source-libraries-and-tools).** Go to the project folder with `cd $GOPATH/src/gitlab.com/ulm0/graphql-docker-api/cmd/gdapi` and `go get -d ./`, this will download the depedencies needed, once that's done build the package with `go build`.
+  * **Using [`dep`](README.md#open-source-libraries-and-tools).** Go to the project folder with `cd $GOPATH/src/gitlab.com/ulm0/graphql-docker-api`, and run `dep ensure`, now get to `$GOPATH/src/gitlab.com/ulm0/graphql-docker-api/cmd/gdapi` and build the package with `go build`.
 
 **That's pretty much it. Congrats You have GraphQL Docker API on your system now.**
 
@@ -34,7 +34,7 @@ docker run -d \
 -p 8080:8080 \
 -e API_ENDPOINT="/api" \
 -v /var/run/docker.sock:/var/run/docker.sock \
-klud/docker-gql
+ulm0/docker-gql
 ```
 
 **Note**: The `-v /var/run/docker.sock:/var/run/docker.sock` option can be used in Linux environments only.
@@ -49,7 +49,7 @@ docker run -d \
 -p 8080:8080 \
 -e API_ENDPOINT="/api" \
 -e DOCKER_HOST="http://<host>:<port>" \
-klud/docker-gql
+ulm0/docker-gql
 ```
 
 ##### HTTPS
@@ -61,7 +61,7 @@ docker run -d \
 -e API_ENDPOINT="/api" \
 -e DOCKER_HOST="https://<host>:<port>" \
 -v /path/to/folder/containing/the/docker/certs:/etc/docker \
-klud/docker-gql
+ulm0/docker-gql
 ```
 
 ## Environment variables
@@ -108,7 +108,7 @@ klud/docker-gql
 * [docker/client](https://github.com/moby/moby/tree/master/client)
 * [golang/dep](https://github.com/golang/dep)
 * [gorilla/mux](https://github.com/gorilla/mux)
-* [neelance/graphql-go](https://gitlab.com/klud/graphql-go)
+* [neelance/graphql-go](https://gitlab.com/ulm0/graphql-go)
 * [urfave/negroni](https://github.com/urfave/negroni)
 
 ---

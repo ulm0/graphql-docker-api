@@ -7,10 +7,10 @@ import (
 	"github.com/urfave/negroni"
 
 	"github.com/gorilla/mux"
-	"gitlab.com/klud/graphql-docker-api/resolver"
-	"gitlab.com/klud/graphql-docker-api/schema"
-	graphql "gitlab.com/klud/graphql-go"
-	"gitlab.com/klud/graphql-go/relay"
+	"gitlab.com/ulm0/graphql-docker-api/resolver"
+	"gitlab.com/ulm0/graphql-docker-api/schema"
+	graphql "gitlab.com/ulm0/graphql-go"
+	"gitlab.com/ulm0/graphql-go/relay"
 )
 
 var scheme *graphql.Schema

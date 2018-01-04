@@ -4,8 +4,8 @@ RUN apk add --no-cache git build-base && \
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     apk add --no-cache upx
-ADD . /go/src/gitlab.com/klud/graphql-docker-api/
-WORKDIR /go/src/gitlab.com/klud/graphql-docker-api/cmd/gdapi
+ADD . /go/src/gitlab.com/ulm0/graphql-docker-api/
+WORKDIR /go/src/gitlab.com/ulm0/graphql-docker-api/cmd/gdapi
 RUN go get -d ./ && \
     CGO_ENABLED=0 GOOS=linux go build -a -ldflags="-s -w" -installsuffix cgo && \
 #   upx --best -qq gdapi && \
@@ -23,7 +23,7 @@ LABEL maintainer="Pierre Ugaz <pierre.ugaz@ruway.me>" \
     org.label-schema.name="GraphQL Docker API" \
     org.label-schema.schema-version="1.0" \
     org.label-schema.vcs-ref=$VCS_REF \
-    org.label-schema.vcs-url="https://gitlab.com/klud/graphql-docker-api" \
+    org.label-schema.vcs-url="https://gitlab.com/ulm0/graphql-docker-api" \
     org.label-schema.vendor="Pierre Ugaz" \
     org.label-schema.version=$VERSION
 ENV UI_ENDPOINT="" \
@@ -31,6 +31,6 @@ ENV UI_ENDPOINT="" \
     DOCKER_HOST="" \
     GQL_PORT="" \
     GRAPHIQL=""
-COPY --from=build-env /go/src/gitlab.com/klud/graphql-docker-api/cmd/gdapi/gdapi .
+COPY --from=build-env /go/src/gitlab.com/ulm0/graphql-docker-api/cmd/gdapi/gdapi .
 EXPOSE 8080
 CMD ["/gdapi"]

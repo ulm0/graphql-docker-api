@@ -63,9 +63,9 @@
 
 [[projects]]
   branch = "master"
-  name = "gitlab.com/klud/graphql-go"
+  name = "gitlab.com/ulm0/graphql-go"
   packages = [".","errors","internal/common","internal/exec","internal/exec/packer","internal/exec/resolvable","internal/exec/selected","internal/query","internal/schema","internal/validation","introspection","log","relay","trace"]
-  revision = "bfbadfe7fdac53a50f74070b5f28741fe08ea44f"
+  revision = "8867f42e1f0199680766551a0371cf4ed332010f"
 
 [[projects]]
   branch = "master"
@@ -77,11 +77,11 @@
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["windows"]
-  revision = "83801418e1b59fb1880e363299581ee543af32ca"
+  revision = "28a7276518d399b9634904daad79e18b44d481bc"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "2850c11564002147e04e8e9272ace93a3629ff1b97609a5bff7cfcc8b3569105"
+  inputs-digest = "adfa748063f76e28f1b5b56a8be886677b16b6bcfe761711fa63c815200d9452"
   solver-name = "gps-cdcl"
   solver-version = 1
